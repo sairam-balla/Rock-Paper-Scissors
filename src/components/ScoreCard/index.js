@@ -1,4 +1,9 @@
-import {HeaderCard, ScoreContainer, Heading} from './StyledComponents'
+import {
+  HeaderCard,
+  ScoreContainer,
+  Heading,
+  ScoreDisplay,
+} from './StyledComponents'
 
 const ScoreCard = props => {
   const {score} = props
@@ -11,8 +16,8 @@ const ScoreCard = props => {
         </Heading>
       </div>
       <ScoreContainer>
-        <p>Score</p>
-        <p>{score}</p>
+        <ScoreDisplay>Score</ScoreDisplay>
+        <ScoreDisplay>{score}</ScoreDisplay>
       </ScoreContainer>
     </HeaderCard>
   )

@@ -2,16 +2,16 @@ import {Component} from 'react'
 import RulesPopUp from '../RulesPopUp'
 import ScoreCard from '../ScoreCard'
 import {
-  GameCard,
+  GameCards,
   CardImg,
   BgContainer,
   RowContainer,
   ColumnContainer,
-  GameCards,
   RulesButtonContainer,
   PlayAgainButton,
   CardNames,
 } from './StyledComponents'
+import PlayerCards from '../PlayerCards'
 
 const initialState = {
   score: 0,
@@ -99,9 +99,9 @@ class RockPaperScissors extends Component {
     }
   }
 
-  onSelectItem = async event => {
-    await this.onSystemSelection(event.target.alt)
-    switch (event.target.alt) {
+  onSelectItem = async id => {
+    await this.onSystemSelection(id)
+    switch (id) {
       case 'ROCK':
         return this.onSelectRock()
 
@@ -157,20 +157,13 @@ class RockPaperScissors extends Component {
 
     return (
       <GameCards>
-        {choicesList.map(eachItem => {
-          const buttonId = eachItem.id.toLowerCase().concat('Button')
-
-          return (
-            <GameCard
-              key={eachItem.id}
-              data-testid={buttonId}
-              type="button"
-              onClick={this.onSelectItem}
-            >
-              <CardImg src={eachItem.imageUrl} alt={eachItem.id} />
-            </GameCard>
-          )
-        })}
+        {choicesList.map(eachItem => (
+          <PlayerCards
+            key={eachItem.id}
+            {...eachItem}
+            onSelectItem={this.onSelectItem}
+          />
+        ))}
       </GameCards>
     )
   }

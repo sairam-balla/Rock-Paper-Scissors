@@ -30,3 +30,8 @@ export const ScoreContainer = styled.div`
   align-items: center;
   border-radius: 10px;
 `
+
+export const ScoreDisplay = styled.p`
+  font-family: 'Roboto';
+  color: #000000;
+`
